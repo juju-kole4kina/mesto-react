@@ -1,0 +1,114 @@
+import './index.css';
+import React from 'react';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
+import PopupWithForm from './components/PopupWithForm';
+import ImagePopup from './components/ImagePopup';
+
+function App() {
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  const [isImageOpen, setImageOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
+
+  function handleEditAvatarClick(){
+    setEditAvatarPopupOpen(true);
+    console.log('попап аватара');
+  }
+
+  function handleEditProfileClick(){
+    setEditProfilePopupOpen(true);
+    console.log('попап профиля');
+  }
+
+  function handleAddPlaceClick(){
+    setAddPlacePopupOpen(true);
+      console.log('попап добавления карточки');
+  }
+
+  function handleCardClick(card){
+    setImageOpen(true);
+    setSelectedCard({
+      ...selectedCard,
+      name: card.name,
+      link: card.link
+    })
+    console.log('попап открытия карточки');
+  }
+
+  function closeAllPopups(){
+    setEditProfilePopupOpen(false);
+    setAddPlacePopupOpen(false);
+    setEditAvatarPopupOpen(false);
+    setImageOpen(false);
+
+    console.log('закрыть попап');
+  }
+  return (
+  <>
+    <Header />
+    <Main
+      onEditProfile={handleEditProfileClick}
+      onAddPlace={handleAddPlaceClick}
+      onEditAvatar={handleEditAvatarClick}
+      onCardClick={handleCardClick}
+    />
+
+    <Footer />
+    <PopupWithForm
+      name="edit-profile"
+      isOpen={isEditProfilePopupOpen}
+      onClose={closeAllPopups}
+      title="Редактировать профиль"
+    >
+      <input type="text" className="popup__input-item" minlength="2" maxlength="40" name="name" id="user-name"
+          placeholder="Ваше имя" required />
+      <span className="popup__input-error user-name-error"></span>
+      <input type="text" className="popup__input-item" minlength="2" maxlength="200" name="about" id="user-description"
+          placeholder="Ваш род деятельности" required />
+      <span className="popup__input-error user-description-error"></span>
+    </PopupWithForm>
+
+    <PopupWithForm
+      name="add-card"
+      isOpen={isAddPlacePopupOpen}
+      onClose={closeAllPopups}
+      title="Новое место"
+    >
+      <input type="text" className="popup__input-item" minlength="2" maxlength="30" name="name" id="title-card"
+            placeholder="Название" required />
+      <span className="popup__input-error title-card-error"></span>
+      <input type="url" class="popup__input-item" name="link" id="card-image" placeholder="Ссылка на изображение"
+            required />
+      <span className="popup__input-error card-image-error"></span>
+    </PopupWithForm>
+
+    <PopupWithForm PopupWithForm
+      name="edit-avatar"
+      isOpen={isEditAvatarPopupOpen}
+      onClose={closeAllPopups}
+      title="Обновить аватар"
+    >
+      <input type="url" className="popup__input-item" name="link" id="avatar-image" placeholder="Ссылка на изображение"
+            required />
+      <span className="popup__input-error avatar-image-error"></span>
+    </PopupWithForm>
+
+    <PopupWithForm
+      name="verification"
+      title="Вы уверены?"
+    />
+
+    <ImagePopup
+      isOpen={isImageOpen}
+      card={selectedCard}
+      onClose={closeAllPopups}
+    />
+  </>
+
+  );
+}
+
+export default App;
