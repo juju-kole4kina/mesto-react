@@ -18,7 +18,7 @@ React.useEffect(() => {
     setCards(cards);
   })
   .catch(err => console.log(err));
-})
+}, [])
 
   return(
     <main className="content">

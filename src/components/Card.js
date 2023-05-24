@@ -6,7 +6,7 @@ function Card(props) {
     props.onCardClick(props.card);
   }
   return(
-    <li className="gallery__item" key={props.id}>
+    <li className="gallery__item">
             <img src={props.link} alt={props.name} className="gallery__image" onClick={handleClick} />
             <button type="button" className="gallery__delete-btn" aria-label="Удалить"></button>
             <div className="gallery__description">

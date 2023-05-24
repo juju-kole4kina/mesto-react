@@ -62,11 +62,12 @@ function App() {
       isOpen={isEditProfilePopupOpen}
       onClose={closeAllPopups}
       title="Редактировать профиль"
+      buttonText="Сохранить"
     >
-      <input type="text" className="popup__input-item" minlength="2" maxlength="40" name="name" id="user-name"
+      <input type="text" className="popup__input-item" minLength="2" maxLength="40" name="name" id="user-name"
           placeholder="Ваше имя" required />
       <span className="popup__input-error user-name-error"></span>
-      <input type="text" className="popup__input-item" minlength="2" maxlength="200" name="about" id="user-description"
+      <input type="text" className="popup__input-item" minLength="2" maxLength="200" name="about" id="user-description"
           placeholder="Ваш род деятельности" required />
       <span className="popup__input-error user-description-error"></span>
     </PopupWithForm>
@@ -76,11 +77,12 @@ function App() {
       isOpen={isAddPlacePopupOpen}
       onClose={closeAllPopups}
       title="Новое место"
+      buttonText="Сохранить"
     >
-      <input type="text" className="popup__input-item" minlength="2" maxlength="30" name="name" id="title-card"
+      <input type="text" className="popup__input-item" minLength="2" maxLength="30" name="name" id="title-card"
             placeholder="Название" required />
       <span className="popup__input-error title-card-error"></span>
-      <input type="url" class="popup__input-item" name="link" id="card-image" placeholder="Ссылка на изображение"
+      <input type="url" className="popup__input-item" name="link" id="card-image" placeholder="Ссылка на изображение"
             required />
       <span className="popup__input-error card-image-error"></span>
     </PopupWithForm>
@@ -90,6 +92,7 @@ function App() {
       isOpen={isEditAvatarPopupOpen}
       onClose={closeAllPopups}
       title="Обновить аватар"
+      buttonText="Сохранить"
     >
       <input type="url" className="popup__input-item" name="link" id="avatar-image" placeholder="Ссылка на изображение"
             required />
@@ -99,6 +102,7 @@ function App() {
     <PopupWithForm
       name="verification"
       title="Вы уверены?"
+      buttonText="Да"
     />
 
     <ImagePopup

@@ -9,7 +9,7 @@ function PopupWithForm(props) {
       <form action="post" className={`popup__form popup__form_type_${props.name}`} name={props.name} noValidate={true}>
         <h2 className="popup__heading">{props.title}</h2>
         {props.children}
-        <button type="submit" className="popup__safe-btn">{(props.name === "verification") ? 'Да' : 'Сохранить'}</button>
+        <button type="submit" className="popup__safe-btn">{props.buttonText}</button>
       </form>
     </div>
   </section>
