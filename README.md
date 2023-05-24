@@ -35,4 +35,4 @@
 
 ---
 
-- [Ссылка на проект](https://juju-kole4kina.github.io/mesto-react/)
+- [Ссылка на проект](https://juju-kole4kina.github.io/mesto-react/index.html)
