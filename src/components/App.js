@@ -6,6 +6,7 @@ import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 import { api } from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -43,6 +44,15 @@ function App() {
 
   function handleUpdateUser(userData) {
     api.setUserInfo(userData)
+    .then((data) => {
+      setCurrentUser(data);
+      closeAllPopups();
+    })
+    .catch((err) => console.log(err));
+  }
+
+  function handleUpdateAvatar(userData) {
+    api.setUserAvatar(userData)
     .then((data) => {
       setCurrentUser(data);
       closeAllPopups();
@@ -96,17 +106,7 @@ function App() {
         <span className="popup__input-error card-image-error"></span>
       </PopupWithForm>
 
-      <PopupWithForm PopupWithForm
-        name="edit-avatar"
-        isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopups}
-        title="Обновить аватар"
-        buttonText="Сохранить"
-      >
-        <input type="url" className="popup__input-item" name="link" id="avatar-image" placeholder="Ссылка на изображение"
-              required />
-        <span className="popup__input-error avatar-image-error"></span>
-      </PopupWithForm>
+      <EditAvatarPopup isOpen={isEditAvatarPopupOpen} isClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
 
       <PopupWithForm
         name="verification"
