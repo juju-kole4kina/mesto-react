@@ -5,6 +5,7 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
 import { api } from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -40,6 +41,15 @@ function App() {
       console.log('попап добавления карточки');
   }
 
+  function handleUpdateUser(userData) {
+    api.setUserInfo(userData)
+    .then((data) => {
+      setCurrentUser(data);
+      closeAllPopups();
+    })
+    .catch((err) => console.log(err));
+  }
+
   function handleCardClick(card){
     setImageOpen(true);
     setSelectedCard({
@@ -69,20 +79,7 @@ function App() {
       />
 
       <Footer />
-      <PopupWithForm
-        name="edit-profile"
-        isOpen={isEditProfilePopupOpen}
-        onClose={closeAllPopups}
-        title="Редактировать профиль"
-        buttonText="Сохранить"
-      >
-        <input type="text" className="popup__input-item" minLength="2" maxLength="40" name="name" id="user-name"
-            placeholder="Ваше имя" required />
-        <span className="popup__input-error user-name-error"></span>
-        <input type="text" className="popup__input-item" minLength="2" maxLength="200" name="about" id="user-description"
-            placeholder="Ваш род деятельности" required />
-        <span className="popup__input-error user-description-error"></span>
-      </PopupWithForm>
+      <EditProfilePopup isOpen={isEditProfilePopupOpen} isClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
 
       <PopupWithForm
         name="add-card"
