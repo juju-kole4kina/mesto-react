@@ -17,6 +17,11 @@ function Card(props) {
   function handleClick(){
     props.onCardClick(props.card);
   }
+
+  function handleLikeClick() {
+    props.onCardLike(props.card);
+  }
+
   return(
     <li className="gallery__item">
             <img src={props.link} alt={props.name} className="gallery__image" onClick={handleClick} />
@@ -24,7 +29,7 @@ function Card(props) {
             <div className="gallery__description">
               <h2 className="gallery__item-title">{props.name}</h2>
               <div className="card__like">
-                <button type="button" className={cardLikeButtonClassName} aria-label="Мне нравится"></button>
+                <button type="button" className={cardLikeButtonClassName} onClick={handleLikeClick} aria-label="Мне нравится"></button>
                 <span className="card__like-count">{props.likeCount}</span>
               </div>
             </div>

@@ -112,6 +112,10 @@ deleteCardLike(cardId) {
     return result;
   })
 }
+
+changeLikeCardStatus(cardId, isLiked) {
+  return isLiked ? this.putCardLike(cardId) : this.deleteCardLike(cardId);
+}
 }
 
 export const api = new Api({
