@@ -22,10 +22,14 @@ function Card(props) {
     props.onCardLike(props.card);
   }
 
+  function handleDeleteClick() {
+    props.onCardDelete(props.card)
+  }
+
   return(
     <li className="gallery__item">
             <img src={props.link} alt={props.name} className="gallery__image" onClick={handleClick} />
-            <button type="button" className={cardDeleteButtonClassName} aria-label="Удалить"></button>
+            <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick} aria-label="Удалить"></button>
             <div className="gallery__description">
               <h2 className="gallery__item-title">{props.name}</h2>
               <div className="card__like">
