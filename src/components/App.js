@@ -44,7 +44,8 @@ function App() {
     .then((newCard) => {
       const newCards = cards.map((c) => c._id === card._id ? newCard : c);
       setCards(newCards);
-    });
+    })
+    .catch((err) => console.log(err));
   }
 
   function handleCardDelete(card) {
@@ -58,7 +59,7 @@ function App() {
   function handleAddPlaceSubmit(cardData) {
     api.addNewCard(cardData)
     .then((newCard) => {
-      setCards([...cards, newCard]);
+      setCards([newCard, ...cards]);
       closeAllPopups();
     })
     .catch((err) => console.log(err));

@@ -2,19 +2,14 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup(props) {
-  // const [name, setName] = React.useState('');
-  // const [link, setLink] = React.useState('');
-
-  // function handleNameChange(e) {
-  //   setName(e.target.value);
-  // }
-
-  // function handleLinkChange(e) {
-  //   setLink(e.target.value);
-  // }
 
   const cardNameRef = React.useRef('');
   const cardLinkRef = React.useRef('');
+
+  React.useEffect(() => {
+    cardNameRef.current.value='';
+    cardLinkRef.current.value='';
+  }, [props.isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();

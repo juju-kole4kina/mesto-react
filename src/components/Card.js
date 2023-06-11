@@ -28,13 +28,13 @@ function Card(props) {
 
   return(
     <li className="gallery__item">
-            <img src={props.link} alt={props.name} className="gallery__image" onClick={handleClick} />
+            <img src={props.card.link} alt={props.card.name} className="gallery__image" onClick={handleClick} />
             <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick} aria-label="Удалить"></button>
             <div className="gallery__description">
-              <h2 className="gallery__item-title">{props.name}</h2>
+              <h2 className="gallery__item-title">{props.card.name}</h2>
               <div className="card__like">
                 <button type="button" className={cardLikeButtonClassName} onClick={handleLikeClick} aria-label="Мне нравится"></button>
-                <span className="card__like-count">{props.likeCount}</span>
+                <span className="card__like-count">{props.card.likes.length}</span>
               </div>
             </div>
           </li>

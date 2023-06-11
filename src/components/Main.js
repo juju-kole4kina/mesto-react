@@ -22,7 +22,11 @@ const currentUser = React.useContext(CurrentUserContext);
     <section className="gallery" aria-label="Галерея">
       <ul className="gallery__list">
         {props.cards.map((card) => (
-          <Card key={card._id} link={card.link} name={card.name} likeCount={card.likes.length} card={card} onCardClick={props.onCardClick} onCardLike={props.handleCardLike} onCardDelete={props.handleCardDelete} />
+          <Card key={card._id}
+          card={card}
+          onCardClick={props.onCardClick}
+          onCardLike={props.handleCardLike}
+          onCardDelete={props.handleCardDelete} />
         ))}
       </ul>
     </section>
